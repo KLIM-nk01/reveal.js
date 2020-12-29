@@ -1302,6 +1302,7 @@ $controlsArrowAngleActive: 36deg;
 		// Fixes overview rendering errors in FF48+, not applied to
 		// other browsers since it degrades performance
 		-moz-transform-style: preserve-3d;
+		
 	}
 
 	.slides section {
@@ -1380,6 +1381,7 @@ $controlsArrowAngleActive: 36deg;
 .reveal.rtl .slides h4,
 .reveal.rtl .slides h5,
 .reveal.rtl .slides h6 {
+	color: #61DAFB;
 	direction: rtl;
 	font-family: sans-serif;
 }

@@ -1,40 +1,311 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
-		<title>reveal.js</title>
+    <title>reveal.js</title>
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme" />
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+    <!-- Theme used for syntax highlighted code -->
+    <link
+      rel="stylesheet"
+      href="plugin/highlight/monokai.css"
+      id="highlight-theme"
+    />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h2>react</h2>
+          <img
+            class="rot"
+            style="margin: 0"
+            src="./assets/React-icon.svg"
+            alt="React-icon"
+            width="60%"
+          />
+          <p>JavaScript library for creating user interfaces</p>
+        </section>
+        <section>
+          <h2>What Is React?</h2>
+          <p>
+            React is a declarative, efficient, and flexible JavaScript library
+            for building user interfaces. It lets you compose complex UIs from
+            small and isolated pieces of code called “components”.
+          </p>
+        </section>
+        <section>
+          <section>
+            <h2>Declarative</h2>
+            <p>
+              React makes it painless to create interactive UIs. Design simple
+              views for each state in your application, and React will
+              efficiently update and render just the right components when your
+              data changes.
+            </p>
+          </section>
+          <section>
+            <h2>Component-Based</h2>
+            <p>
+              Build encapsulated components that manage their own state, then
+              compose them to make complex UIs.
+            </p>
+          </section>
+          <section>
+            <h2>Learn Once, Write Anywhere</h2>
+            <p>
+              We don’t make assumptions about the rest of your technology stack,
+              so you can develop new features in React without rewriting
+              existing code.
+            </p>
+          </section>
+        </section>
+        <section>
+          <h2>Hello World</h2>
+          <p>The smallest React example looks like this:</p>
+          <pre
+            data-id="code-animation"
+          ><code class="hljs" data-trim data-line-numbers>
+						ReactDOM.render(
+						<h1>Hello, world!</h1>,
+						document.getElementById('root')
+						);
+					</code></pre>
+        </section>
+        <section>
+          <section>
+            <h2>Introducing JSX</h2>
+            <p>Consider this variable declaration:</p>
+            <pre
+              data-id="code-animation"
+            ><code class="hljs" data-trim data-line-numbers>
+						const element = <h1>Hello, world!</h1>;
+					</code></pre>
+          </section>
+          <section>
+            <h2>Why JSX?</h2>
+            <p>
+              Instead of artificially separating technologies by putting markup
+              and logic in separate files, React separates concerns with loosely
+              coupled units called “components” that contain both. We will come
+              back to components in a further section, but if you’re not yet
+              comfortable putting markup in JS, this talk might convince you
+              otherwise.
+            </p>
+          </section>
+          <section>
+            <p>
+              Fundamentally, JSX is syntactic sugar for React.createElement
+              (component, props, ... children) functions.
+            </p>
+            <pre
+              data-id="code-animation"
+            ><code class="hljs" data-trim data-line-numbers>
+						React.createElement(
+  						MyButton,
+  						{color: 'blue', shadowSize: 2},
+  						'Click Me'
+						)
+					</code></pre>
+            <p style="font-size: 0.5em">
+              Unlike browser DOM elements, React elements are plain objects, and
+              are cheap to create. React DOM takes care of updating the DOM to
+              match the React elements.
+            </p>
+          </section>
+        </section>
+        <section>
+          <h2>Rendering Elements</h2>
+          <p>
+            Elements are the smallest building blocks of React apps. An element
+            describes what you want to see on the screen:
+          </p>
+          <pre
+            data-id="code-animation"
+          ><code class="hljs" data-trim data-line-numbers>
+						const element = <h1>Hello, world</h1>;
+					</code></pre>
+          <p style="font-size: 0.5em">
+            Unlike browser DOM elements, React elements are plain objects, and
+            are cheap to create. React DOM takes care of updating the DOM to
+            match the React elements.
+          </p>
+        </section>
+        <section>
+          <section>
+            <h2>Handling Events</h2>
+            <p>
+              Handling events with React elements is very similar to handling
+              events on DOM elements. There are some syntax differences:
+            </p>
+            <ul>
+              <li>
+                React events are named using camelCase, rather than lowercase.
+              </li>
+              <li>
+                With JSX you pass a function as the event handler, rather than a
+                string.
+              </li>
+            </ul>
+          </section>
+          <section>
+            <p>For example, the HTML:</p>
+            <pre
+              data-id="code-animation"
+            ><code class="hljs" data-trim data-line-numbers>
+			<button onclick="activateLasers()">
+				Activate Lasers
+			  </button>
+					</code></pre>
+            <p>is slightly different in React:</p>
+            <pre
+              data-id="code-animation"
+            ><code class="hljs" data-trim data-line-numbers>
+				<button onClick={activateLasers}>
+					Activate Lasers
+				  </button>
+					</code></pre>
+          </section>
+          <section>
+            <p>
+              Another difference is that you cannot return false to prevent
+              default behavior in React.
+            </p>
+            <pre
+              data-id="code-animation"
+            ><code class="hljs" data-trim data-line-numbers>
+				function ActionLink() {
+					function handleClick(e) {
+					  e.preventDefault();
+					  console.log('The link was clicked.');
+					}
+				  
+					return (
+					  <a href="#" onClick={handleClick}>
+						Click me
+					  </a>
+					);
+				  }
+					</code></pre>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>Forms</h2>
+            <p>
+              HTML form elements work a little bit differently from other DOM
+              elements in React, because form elements naturally keep some
+              internal state. For example, this form in plain HTML accepts a
+              single name:
+            </p>
+            <pre
+              data-id="code-animation"
+            ><code class="hljs" data-trim data-line-numbers>
+				<form>
+					<label>
+					  Name:
+					  <input type="text" name="name" />
+					</label>
+					<input type="submit" value="Submit" />
+				  </form>
+					   </code></pre>
+          </section>
+          <section>
+            <p>
+              This form has the default HTML form behavior of browsing to a new
+              page when the user submits the form. If you want this behavior in
+              React, it just works. But in most cases, it’s convenient to have a
+              JavaScript function that handles the submission of the form and
+              has access to the data that the user entered into the form. The
+              standard way to achieve this is with a technique called
+              “controlled components”.
+            </p>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>Introducing Hooks</h2>
+            <p>
+              Hooks are a new addition in React 16.8. They let you use state and
+              other React features without writing a class.
+            </p>
+            <pre
+              data-id="code-animation"
+            ><code class="hljs" data-trim data-line-numbers>
+				import React, { useState } from 'react';
+				function Example() {
+				// Declare a new state variable, which we'll call "count"
+				  const [count, setCount] = useState(0);				
+				  return (
+					<div>
+					  <p>You clicked {count} times</p>
+					  <button> onClick={() => setCount(count + 1) }>
+						Click me
+					  </button>
+					</div>
+				  );
+				}
+					</code></pre>
+          </section>
+          <section>
+            <h2>Video Introduction</h2>
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/dpw9EHDh2bM"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </section>
+        </section>
+        <section>
+          <h2 style="color: #764abc">Redux</h2>
+          <img class="rot" src="./assets/redux.svg" alt="redux-logo" />
+        </section>
+        <section>
+          <h2 style="color: #764abc">What is Redux?</h2>
+          <p>
+            Redux is a pattern and library for managing and updating application
+            state, using events called "actions". It serves as a centralized
+            store for state that needs to be used across your entire
+            application, with rules ensuring that the state can only be updated
+            in a predictable fashion.
+          </p>
+		</section>
+		<section>
+			<h2 style="color: #764abc">Why Should I Use Redux?</h2>
+			<p>Redux helps you manage "global" state - state that is needed across many parts of your application.</p>
+			<img src="./assets/redux-mem.jpg" alt="">
+		</section>
+		<section>
+			<h1>THANK YOU!</h1>
+		</section>
+      </div>
+    </div>
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
 </html>
